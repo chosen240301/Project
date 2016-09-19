@@ -23,7 +23,7 @@ public class Main {
         messages = service.findByText("Привет");
         printAll(messages);
 
-        if (!messages.isEmpty()) {
+        if ((messages!=null) && (!messages.isEmpty())) {
             messages.get(0).setText("Жопа");
             service.add(messages.get(0));
         }
@@ -34,6 +34,10 @@ public class Main {
 
     private static void printAll(List<MessageEntity> messages) {
         System.out.println("printAll: ");
+        if (messages == null) {
+            System.out.println("Nothing to print");
+            return;
+        }
         for (MessageEntity message : messages) {
             System.out.println(message);
         }

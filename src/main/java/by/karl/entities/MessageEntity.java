@@ -1,6 +1,7 @@
 package by.karl.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +12,10 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "message", schema = "messages", catalog = "")
-public class MessageEntity {
+@NamedQueries({
+        @NamedQuery(name="Message.findAll", query="select m from MessageEntity m")
+})
+public class MessageEntity implements Serializable{
     private int id;
     private Timestamp time;
     private int userId;
@@ -96,6 +100,6 @@ public class MessageEntity {
     public String toString() {
         Date date = new Date(time.getTime());
         DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        return "Сообщение: " +  formatter.format(date) + " " + userByUserId.getName() + ": " + text;
+        return "Сообщение: " + formatter.format(date) + " " + userByUserId.getName() + ": " + text;
     }
 }

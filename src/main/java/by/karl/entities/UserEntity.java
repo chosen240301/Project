@@ -1,6 +1,7 @@
 package by.karl.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "user", schema = "messages", catalog = "")
-public class UserEntity {
+public class UserEntity implements Serializable {
     private int id;
     private String name;
     private Collection<MessageEntity> messagesById;
