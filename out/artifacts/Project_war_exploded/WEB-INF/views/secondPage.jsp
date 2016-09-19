@@ -14,7 +14,9 @@
         <div id="allUserMessages">
             <c:forEach items="${user.getMessagesById()}" var="message">
                 <div class="message">
+                    <div class="messageText">
                         ${message};
+                    </div>
                 </div>
             </c:forEach>
         </div>

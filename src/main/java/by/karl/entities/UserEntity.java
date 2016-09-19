@@ -70,6 +70,6 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Имя: " + name;
+        return name;
     }
 }

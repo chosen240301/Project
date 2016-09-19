@@ -12,16 +12,17 @@
     border: solid thin;
     background: lightcyan;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .user {
     margin-left: 5px;
 }
 
-.message {
+.message .messageText {
     margin-left: 10px;
-
 }
+
 .message:not(:last-child) {
     border-bottom: thin dashed;
 }

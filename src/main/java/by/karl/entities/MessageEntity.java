@@ -99,6 +99,6 @@ public class MessageEntity implements Serializable{
     public String toString() {
         Date date = new Date(time.getTime());
         DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        return "Сообщение: " + formatter.format(date) + ": " + text;
+        return formatter.format(date) + ": " + text;
     }
 }
