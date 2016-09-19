@@ -1,0 +1,25 @@
+#allUsers {
+    font-style: italic;
+    border-bottom: double black;
+    background: lightskyblue;
+    width: 500px;
+    margin: 5px;
+}
+
+#allUserMessages {
+    font-style: normal;
+    margin-right: 10px;
+    border: solid thin;
+    background: lightcyan;
+    margin-left: 10px;
+}
+
+.user {
+    margin-left: 5px;
+}
+
+.message {
+    margin-left: 10px;
+
+    border-bottom: thin dashed;
+}
