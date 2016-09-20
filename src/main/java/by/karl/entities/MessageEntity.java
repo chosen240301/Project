@@ -12,9 +12,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "message", schema = "messages", catalog = "")
-@NamedQueries({
-        @NamedQuery(name="Message.findAll", query="select m from MessageEntity m")
-})
+@NamedQueries(
+        {@NamedQuery(name="Message.findAll", query="select m from MessageEntity m")})
 public class MessageEntity implements Serializable{
     private int id;
     private Timestamp time;
@@ -100,6 +99,6 @@ public class MessageEntity implements Serializable{
     public String toString() {
         Date date = new Date(time.getTime());
         DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        return "Сообщение: " + formatter.format(date) + " " + userByUserId.getName() + ": " + text;
+        return formatter.format(date) + ": " + text;
     }
 }

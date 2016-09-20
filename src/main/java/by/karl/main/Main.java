@@ -1,7 +1,10 @@
 package by.karl.main;
 
 import by.karl.entities.MessageEntity;
+import by.karl.entities.UserEntity;
 import by.karl.intf.MessageService;
+import by.karl.intf.UserService;
+import com.google.common.collect.Lists;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.List;
@@ -16,30 +19,34 @@ public class Main {
         ctx.load("classpath:spring-config.xml"); //move from src.main.java to src.main.resources
         ctx.refresh();
 
-        MessageService service = ctx.getBean("jpaContactService", MessageService.class);
-        List<MessageEntity> messages = service.findAll();
-        printAll(messages);
+        MessageService messageService = ctx.getBean("jpaMessageService", MessageService.class);
+        UserService userService = ctx.getBean("jpaUserService", UserService.class);
+        List<UserEntity> users = userService.findAll();
+        printAllUsers(users);
 
-        messages = service.findByText("Привет");
-        printAll(messages);
-
-        if ((messages!=null) && (!messages.isEmpty())) {
-            messages.get(0).setText("Жопа");
-            service.add(messages.get(0));
-        }
-        messages = service.findAll();
-        printAll(messages);
 
     }
 
-    private static void printAll(List<MessageEntity> messages) {
-        System.out.println("printAll: ");
+    private static void printAllMessages(List<MessageEntity> messages) {
         if (messages == null) {
-            System.out.println("Nothing to print");
+            System.out.println("Нет сообщений");
             return;
         }
         for (MessageEntity message : messages) {
-            System.out.println(message);
+            System.out.println("\t" + message);
+        }
+    }
+
+
+    private static void printAllUsers(List<UserEntity> users) {
+        System.out.println("printAllUsers: ");
+        if (users == null) {
+            System.out.println("Нет пользователей");
+            return;
+        }
+        for (UserEntity user : users) {
+            System.out.println(user);
+            printAllMessages(Lists.newArrayList(user.getMessagesById()));
         }
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Chosen on 17.09.2016.
  */
-@Service("jpaContactService")
+@Service("jpaMessageService")
 @Repository
 @Transactional
 public class MessageServiceImpl implements MessageService {

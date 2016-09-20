@@ -1,0 +1,28 @@
+#allUsers {
+    font-style: italic;
+    border-bottom: double black;
+    background: lightskyblue;
+    width: 500px;
+    margin: 5px;
+}
+
+#allUserMessages {
+    font-style: normal;
+    margin-right: 10px;
+    border: solid thin;
+    background: lightcyan;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.user {
+    margin-left: 5px;
+}
+
+.message .messageText {
+    margin-left: 10px;
+}
+
+.message:not(:last-child) {
+    border-bottom: thin dashed;
+}

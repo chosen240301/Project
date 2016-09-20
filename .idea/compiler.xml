@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="jpa_quickStart" />
+        <module name="Project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jpa_quickStart" target="1.5" />
+      <module name="Project" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

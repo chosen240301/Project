@@ -2,13 +2,18 @@ package by.karl.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by Chosen on 17.09.2016.
  */
 @Entity
 @Table(name = "user", schema = "messages", catalog = "")
+@NamedQueries(
+        {@NamedQuery(name="User.findAll", query="select distinct u from UserEntity u left join fetch u.messagesById")})
 public class UserEntity implements Serializable {
     private int id;
     private String name;
@@ -61,5 +66,10 @@ public class UserEntity implements Serializable {
 
     public void setMessagesById(Collection<MessageEntity> messagesById) {
         this.messagesById = messagesById;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
