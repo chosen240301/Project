@@ -9,13 +9,13 @@
 <div id="allUsers">
     <c:forEach items="${userJSP}" var="user">
         <div class="user">
-                ${user};
+                ${user}
         </div>
         <div id="allUserMessages">
             <c:forEach items="${user.getMessagesById()}" var="message">
                 <div class="message">
                     <div class="messageText">
-                        ${message};
+                        ${message}
                     </div>
                 </div>
             </c:forEach>

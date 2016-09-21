@@ -1,6 +1,6 @@
 #allUsers {
     font-style: italic;
-    border-bottom: double black;
+    border: double black;
     background: lightskyblue;
     width: 500px;
     margin: 5px;
