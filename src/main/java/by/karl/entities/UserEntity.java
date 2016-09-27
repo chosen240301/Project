@@ -12,8 +12,10 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "user", schema = "messages", catalog = "")
-@NamedQueries(
-        {@NamedQuery(name="User.findAll", query="select distinct u from UserEntity u left join fetch u.messagesById")})
+@NamedQueries({
+        @NamedQuery(name = "User.findAll", query = "select distinct u from UserEntity u left join fetch u.messagesById"),
+        @NamedQuery(name = "User.findByName", query = "select distinct u from UserEntity u left join fetch u.messagesById WHERE u.name = :name")
+})
 public class UserEntity implements Serializable {
     private int id;
     private String name;

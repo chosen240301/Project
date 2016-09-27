@@ -21,25 +21,26 @@ import java.util.List;
 @Repository
 @Transactional
 public class MessageServiceImpl implements MessageService {
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    @Transactional(readOnly = true)
+    public List<MessageEntity> findAll() {
+        return Lists.newArrayList(messageRepository.findAll());
+    }
+
+    public List<MessageEntity> findByText(String text) {
+        return messageRepository.findByText(text);
+    }
+
+    public void add(MessageEntity messageEntity) {
+        messageRepository.save(messageEntity);
+    }
     /*
-        @Autowired
-        private MessageRepository messageRepository;
-
-        public List<MessageEntity> findAll() {
-            return Lists.newArrayList(messageRepository.findAll());
-        }
-
-        public List<MessageEntity> findByText(String text) {
-            return messageRepository.findByText(text);
-        }
-
-        public void add(MessageEntity messageEntity) {
-            messageRepository.save(messageEntity);
-        }
-    */
     @PersistenceContext
     private EntityManager em;
-    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
+    @Transactional(readOnly = true)
     public List<MessageEntity> findAll() {
         List<MessageEntity> messages = em.createNamedQuery("Message.findAll",
                 MessageEntity.class).getResultList() ;
@@ -53,4 +54,5 @@ public class MessageServiceImpl implements MessageService {
     public void add(MessageEntity messageEntity) {
         return;
     }
+    */
 }

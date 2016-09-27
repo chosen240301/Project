@@ -5,6 +5,8 @@ import by.karl.entities.UserEntity;
 import by.karl.intf.MessageService;
 import by.karl.intf.UserService;
 import com.google.common.collect.Lists;
+import org.apache.commons.logging.Log;
+import org.apache.log4j.Logger;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.List;
@@ -14,17 +16,14 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring-config.xml"); //move from src.main.java to src.main.resources
         ctx.refresh();
-
         MessageService messageService = ctx.getBean("jpaMessageService", MessageService.class);
         UserService userService = ctx.getBean("jpaUserService", UserService.class);
         List<UserEntity> users = userService.findAll();
         printAllUsers(users);
-
-
+        UserEntity user = userService.findByName("Вася").get(0);
     }
 
     private static void printAllMessages(List<MessageEntity> messages) {
